@@ -21,3 +21,26 @@
 
 en:
   hello: "Hello world"
+  suggest_question: "Suggest question"
+  profile: "Profile"
+  edit_profile: "Setting profile"
+  signout: "Sign out"
+  login: "Login"
+  controllers:
+  views:
+    static_pages:
+      home:
+        welcome: "Welcome to Framgia Testing System"
+    layouts:
+        header:
+          logo: "Framgia Test"
+          home: "Home"
+          signup: "Sign up"
+          signin: "Sign in"
+          contribute_questions: "Contribute Questions"
+          account: "Account"
+        footer:
+          content: "Framgia Team"
+  helpers:
+    base_title: "Framgia Testing System"
+  models:
