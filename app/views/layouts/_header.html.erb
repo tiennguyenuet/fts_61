@@ -1,0 +1,30 @@
+<header class="navbar navbar-default">
+  <div class="container-fluid">
+    <%= link_to t("views.layouts.header.logo"), "#", id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to t("views.layouts.header.home"), root_path %></li>
+        <li><%= link_to t("views.layouts.header.signup"), new_user_registration_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to t("suggest_question"), "#" %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= current_user.name %><b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t("profile"), current_user %></li>
+              <li><%= link_to t("edit_profile"), edit_user_registration_path %></li>
+              <li class="divider"></li>
+              <li>
+                <li><%= link_to t("signout"), destroy_user_session_path, method: :delete %></li>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to t("Login"), new_user_session_path %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
