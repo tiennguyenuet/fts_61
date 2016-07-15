@@ -11,6 +11,7 @@ en:
         home: "Home"
         signup: "Sign up"
         signin: "Sign in"
+        signout: "Sign out"
         contribute_questions: "Contribute Questions"
         account: "Account"
       footer:
@@ -33,6 +34,11 @@ en:
         edit: "Edit"
         delete: "Delete"
         delete_confirm: "Are you sure?"
+    user:
+      users: "All users"
+      forget_password: "Forgot password"
+      change_password: "Change your password"
+      edit: "Edit Profile"
   helpers:
     base_title: "Framgia Testing System"
     shared:
