@@ -48,3 +48,7 @@ h1 {
     text-decoration: none;
   }
 }
+
+.new_subject_button {
+  margin-bottom: 1em;
+}

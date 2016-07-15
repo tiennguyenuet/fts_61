@@ -28,16 +28,32 @@ en:
       home:
         welcome: "Welcome to Framgia Testing System"
     layouts:
-        header:
-          logo: "Framgia Test"
-          home: "Home"
-          signup: "Sign up"
-          signin: "Sign in"
-          contribute_questions: "Contribute Questions"
-          account: "Account"
-        footer:
-          content: "Framgia Team"
+      header:
+        logo: "Framgia Test"
+        home: "Home"
+        signup: "Sign up"
+        signin: "Sign in"
+        contribute_questions: "Contribute Questions"
+        account: "Account"
+      footer:
+        content: "Framgia Team"
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "&hellip;"
+    admin:
+      subjects:
+        all_subject: "Subjects"
+        add_new: "Create"
+        index: "#"
+        name: "Subject"
+        total_question: "Question number"
+        duration: "Duration"
+        description: "Description"
+        edit: "Edit"
+        delete: "Delete"
+        delete_confirm: "Are you sure?"
   helpers:
     base_title: "Framgia Testing System"
-  models:
-
