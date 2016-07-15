@@ -2,7 +2,7 @@
   <div id="error_explanation">
     <div class="alert alert-danger">
       <%= t "views.shared.error_messages.message" %>
-      <%= pluralize object.errors.count, t("views.shared.error_messages.errors") %>
+      <%= pluralize object.errors.count, t("views.shared.error_messages.error") %>
     </div>
     <ul>
       <% object.errors.full_messages.each do |msg| %>
