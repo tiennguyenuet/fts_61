@@ -21,7 +21,7 @@
 
 en:
   hello: "Hello world"
-
+  suggest_question: "Suggest Questions"
   controllers:
   views:
     static_pages:
@@ -37,6 +37,8 @@ en:
           account: "Account"
         footer:
           content: "Framgia Team"
+    user:
+      users: "All Users"
   helpers:
     base_title: "Framgia Testing System"
   models:
