@@ -17,17 +17,20 @@
     <tbody>
       <% @subjects.each_with_index do |subject, index| %>
         <tr>
-          <td><%= index+1 %></td>
+          <td><%= index + 1 %></td>
           <td><%= subject.name %></td>
           <td><%= subject.total_question %></td>
           <td><%= subject.duration %></td>
           <td><%= subject.description %></td>
           <td>
-            <%= link_to t("views.admin.subjects.edit"), "#",
+            <%= link_to t("views.admin.subjects.edit"),
+              edit_admin_subject_path(subject),
               class: "glyphicon glyphicon-edit" %> |
             <%= link_to t("views.admin.subjects.delete"),
-              method: :delete, data: {confirm: t("views.admin.subjects.delete_confirm")},
-              class: "glyphicon glyphicon-trash" %>
+              admin_subject_path(subject),
+              method: :delete,
+              data: {confirm: t("views.admin.subjects.delete_confirm")},
+              class: "glyphicon glyphicon-trash text-danger" %>
           </td>
         </tr>
       <% end %>

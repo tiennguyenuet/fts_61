@@ -1,6 +1,18 @@
 en:
   hello: "Hello world"
 
+  controllers:
+    admin:
+      subjects_controller:
+        title: "Subject"
+        create_success: "New Subject was successfully created!"
+        create_error: "Create Error!"
+        new_title: "New Subject"
+        new_button: "Create"
+        update_success: "Successfully updated!"
+        update_error: "Update error!"
+        delete_success: "Deleted!"
+        delete_error: "Delete error!"
   views:
     static_pages:
       home:
@@ -39,17 +51,9 @@ en:
       forget_password: "Forgot password"
       change_password: "Change your password"
       edit: "Edit Profile"
-  helpers:
-    base_title: "Framgia Testing System"
     shared:
       error_messages:
         message: "The form contains"
         error: "error"
-  controllers:
-    admin:
-      subjects_controller:
-        title: "Subject"
-        create_success: "New Subject was successfully created!"
-        create_error: "Create Error!"
-        new_title: "New Subject"
-        new_button: "Create"
+  helpers:
+    base_title: "Framgia Testing System"
