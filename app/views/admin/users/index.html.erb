@@ -1,0 +1,32 @@
+<% provide :title, t("views.admin.users.title") %>
+<div class="row">
+  <h1><%= t "views.admin.users.all_user" %></h1>
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <th><%= t "views.admin.users.index" %></th>
+      <th><%= t "views.admin.users.name" %></th>
+      <th><%= t "views.admin.users.email" %></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @users.each_with_index do |user, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td>
+            <%= link_to t("views.admin.users.show"),
+              admin_user_path(user),
+              class: "glyphicon glyphicon-eye-open" %> |
+            <%= link_to t("views.admin.users.delete"),
+              admin_user_path(user),
+              method: :delete,
+              data: {confirm: t("views.admin.users.delete_confirm")},
+              class: "glyphicon glyphicon-trash text-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @users %>
+</div>

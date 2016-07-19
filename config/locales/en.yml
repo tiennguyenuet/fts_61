@@ -13,6 +13,9 @@ en:
         update_error: "Update error!"
         delete_success: "Deleted!"
         delete_error: "Delete error!"
+      users_controller:
+        delete_success: "Deleted!"
+        delete_error: "Delete error!"
   views:
     static_pages:
       home:
@@ -44,6 +47,15 @@ en:
         duration: "Duration"
         description: "Description"
         edit: "Edit"
+        delete: "Delete"
+        delete_confirm: "Are you sure?"
+      users:
+        title: "Users"
+        all_user: "All Users"
+        index: "#"
+        name: "Name"
+        email: "Email"
+        show: "Show"
         delete: "Delete"
         delete_confirm: "Are you sure?"
     user:
