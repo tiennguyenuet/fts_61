@@ -63,6 +63,16 @@ en:
       forget_password: "Forgot password"
       change_password: "Change your password"
       edit: "Edit Profile"
+    exams:
+      create_exam: "Create Exam"
+      subject: "Subject"
+      created_date: "Created Date"
+      status: "Status"
+      duration: "Duration"
+      question_number: "Question number"
+      spent_time: "Spent Time"
+      score: "Score"
+      time_format: "%d-%m-%Y %I:%M %p"
     shared:
       error_messages:
         message: "The form contains"

@@ -1,0 +1,30 @@
+<div class="container">
+  <%= form_for :examination, html: {class: "form-inline"} do |f| %>
+    <%= f.collection_select :subject_id, Subject.all, :id, :name, 
+      class: "form-control" %>
+    <%= f.submit t("views.exams.create_exam"), class: "btn btn-primary" %>
+  <% end %>
+  <hr>
+  <table class="table table-striped table-hover table-style">
+    <thead>
+      <th><%= t ("views.exams.subject") %></th>
+      <th><%= t ("views.exams.created_date") %></th>
+      <th><%= t ("views.exams.status") %></th>
+      <th><%= t ("views.exams.duration") %></th>
+      <th><%= t ("views.exams.question_number") %></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @examinations.each do |exam| %>
+        <tr>
+          <td><%= exam.subject.name %></td>
+          <td><%= exam.created_at.strftime t "views.exams.time_format" %></td>
+          <td><%= exam.status %></td>
+          <td><%= exam.subject.duration %></td>
+          <td><%= exam.subject.total_question %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @examinations %>
+</div>
