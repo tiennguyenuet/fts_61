@@ -25,6 +25,8 @@
 
     <%= render "devise/shared/links" %>
     <%= link_to t("views.social_login.google"), 
-      user_omniauth_authorize_path(:google_oauth2) %>
+      user_omniauth_authorize_path(:google_oauth2) %><br/>
+    <%= link_to t("views.social_login.facebook"), 
+      user_omniauth_authorize_path(:facebook) %>
   </div>
 </div>

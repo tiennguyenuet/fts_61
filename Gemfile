@@ -20,7 +20,7 @@ gem "turbolinks"
 gem "jbuilder", "~> 2.0"
 # bundle exec rake doc:rails generates the API under doc/api.
 gem "sdoc", "~> 0.4.0", group: :doc
-gem "bootstrap-sass"
+gem "bootstrap-sass", "3.2.0.0"
 
 gem "devise", "~>3.4.1"
 # Use ActiveModel has_secure_password
@@ -36,6 +36,7 @@ gem "kaminari"
 gem "public_activity"
 gem "omniauth"
 gem "omniauth-google-oauth2"
+gem "omniauth-facebook"
 gem "figaro"
 gem "ransack"
 
