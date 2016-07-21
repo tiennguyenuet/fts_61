@@ -16,6 +16,9 @@ en:
       users_controller:
         delete_success: "Deleted!"
         delete_error: "Delete error!"
+    exams_controller:
+      create_success: "Exam was created successfully!"
+      create_error: "Create Error!"
   views:
     static_pages:
       home:
@@ -29,6 +32,7 @@ en:
         signout: "Sign out"
         contribute_questions: "Contribute Questions"
         account: "Account"
+        exams: "My Exams"
       footer:
         content: "Framgia Team"
     pagination:
@@ -77,5 +81,8 @@ en:
       error_messages:
         message: "The form contains"
         error: "error"
+    user_mailer:
+      notify_subject_create: "%{subject} was created. Please check and learn more"
+      thank: "Thanks for joining and have a great day!"
   helpers:
     base_title: "Framgia Testing System"
