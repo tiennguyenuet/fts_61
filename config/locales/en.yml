@@ -62,6 +62,23 @@ en:
         show: "Show"
         delete: "Delete"
         delete_confirm: "Are you sure?"
+      question:
+        new: "Add question"
+        add: "Add a question"
+        stt: "#"
+        save: "Save"
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Confirm"
+        question_title: "Question"
+        subject: "Subject"
+        type: "Type"
+        action: "Action"
+        no_question: "Have no question"
+        add_answer: "Add answer"
+        no_answer: "Question have no answer!"
+        create_success: "Create question success!"
+        create_fail: "Create question fail!"
     user:
       users: "All users"
       forget_password: "Forgot password"
@@ -77,6 +94,8 @@ en:
       spent_time: "Spent Time"
       score: "Score"
       time_format: "%d-%m-%Y %I:%M %p"
+  helpers:
+    base_title: "Framgia Testing System"
     shared:
       error_messages:
         message: "The form contains"

@@ -1,0 +1,40 @@
+<%= content_for :title do %>
+  <%= t "views.admin.question.question_title" %>
+<% end %>
+<%= link_to new_admin_question_path, class: "btn btn-primary" do %>
+  <i class="fa fa-plus-circle" aria-hidden="true"></i>
+  <%= t "views.admin.question.add" %>
+<% end %>
+
+<div class="admin_questions">
+  <table class="questions table table-hover table-bordered" id="admin_questions_m">
+    <thead>
+      <tr class="info">
+        <th><%= t "views.admin.question.stt" %></th>
+        <th><%= t "views.admin.question.question_title" %></th>
+        <th><%= t "views.admin.question.subject" %></th>
+        <th><%= t "views.admin.question.type" %></th>
+        <th><%= t "views.admin.question.action" %></th>
+      </tr>
+    </thead>
+    <% @questions.each_with_index do |question, index| %>
+      <tbody id="questions">
+        <% if @questions.size > 0 %>
+          <td class="text-right"><%= index + 1 %></td>
+          <td><%= question.content %></td>
+          <td><%= question.subject.name %></td>
+          <td><%= question.question_type %></td>
+          <td>
+            <%= link_to t("views.admin.question.edit"),
+              edit_admin_question_path(question) %> |
+            <%= link_to t("views.admin.question.delete"),
+              admin_question_path(question), method: :delete,
+              confirm: t("views.admin.question.confirm"), remote: true %>
+          </td>
+        <% else %>
+          <tr><td><%= t "views.admin.question.no_question" %></td></tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+</div>
