@@ -1,6 +1,5 @@
 class Admin::QuestionsController < ApplicationController
   load_and_authorize_resource
-  before_action :load_question, except: [:index, :create, :new]
   before_action :load_all_subject, except: :destroy
 
   def index
@@ -58,6 +57,21 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @question.update question_params
+        format.html do
+          flash[:success] = t "views.admin.question.update_success"
+          redirect_to admin_questions_path
+        end
+        format.json{render @question, status: :ok}
+      else
+        format.html do
+          flash[:danger] = t "views.admin.question.update_fail"
+          render action: :edit
+        end
+        format.json{render @question.error, status: :unprocessable_entity}
+      end
+    end
   end
 
   def destroy
@@ -67,9 +81,6 @@ class Admin::QuestionsController < ApplicationController
   end
 
   private
-  def load_question
-    @question = Question.find_by id: params[:id]
-  end
 
   def load_all_subject
     @subjects = Subject.all

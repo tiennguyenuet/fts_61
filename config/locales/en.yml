@@ -76,9 +76,12 @@ en:
         action: "Action"
         no_question: "Have no question"
         add_answer: "Add answer"
+        answer: "Answer"
         no_answer: "Question have no answer!"
         create_success: "Create question success!"
         create_fail: "Create question fail!"
+        update_success: "Update question seccessed!"
+        update_fail: "Update question failed!"
     user:
       users: "All users"
       forget_password: "Forgot password"

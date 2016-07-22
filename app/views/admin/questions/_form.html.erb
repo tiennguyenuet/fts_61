@@ -22,8 +22,8 @@
       {class: "form-control"} %>
   </div>
   <div id ="answer_field">
-    <%= f.fields_for :anwers do |answer_builder| %>
-
+    <%= f.fields_for :answers do |answer_builder| %>
+      <%= render "answer_fields", f: answer_builder %>
     <% end %>
     <%= link_to_add_fields t("views.admin.question.add_answer"), f, :answers %>
   </div>
