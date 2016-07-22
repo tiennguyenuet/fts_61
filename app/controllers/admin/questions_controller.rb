@@ -75,6 +75,18 @@ class Admin::QuestionsController < ApplicationController
   end
 
   def destroy
+    respond_to do |format|
+      if @question.results.size > 0
+       @message = t "views.admin.question.cant_delete"
+      else
+        @question.destroy
+        format.html do
+          flash[:success] = t "views.admin.question.deleted"
+          redirect_to admin_questions_path
+        end
+        format.json{head :nocontent}
+      end
+    end
   end
 
   def edit

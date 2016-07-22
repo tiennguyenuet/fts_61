@@ -26,10 +26,12 @@
           <td><%= question.question_type %></td>
           <td>
             <%= link_to t("views.admin.question.edit"),
-              edit_admin_question_path(question) %> |
+              edit_admin_question_path(question),
+              class: "glyphicon glyphicon-edit" %> |
             <%= link_to t("views.admin.question.delete"),
               admin_question_path(question), method: :delete,
-              confirm: t("views.admin.question.confirm"), remote: true %>
+              data: {confirm: t("views.admin.question.confirm")},
+              class: "glyphicon glyphicon-trash text-danger" %>
           </td>
         <% else %>
           <tr><td><%= t "views.admin.question.no_question" %></td></tr>
