@@ -82,6 +82,8 @@ en:
         create_fail: "Create question fail!"
         update_success: "Update question seccessed!"
         update_fail: "Update question failed!"
+        cant_delete: "Question have result, can't delete"
+        deleted: "Question has been deleted"
     user:
       users: "All users"
       forget_password: "Forgot password"
