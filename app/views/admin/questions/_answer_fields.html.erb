@@ -1,23 +1,25 @@
 <div class="row">
   <div class="col-md-12">
     <div class="col-md-12 choice_question">
-      <div class="col-md-1">
-        <%= f.label :answer %>
-      </div>
-      <div class="col-md-6">
-        <%= f.text_field :content, class: "form-control choice_answers" %>
-      </div>
-      <div class="col-md-2 space-top-remove">
-        <%= f.check_box :is_correct, class: "answers_checkbox" %>
-        <%= f.label :is_correct %>
-      </div>
-      <div class="col-md-2 space-top-remove">
-        <%= f.hidden_field :_destroy %>
-        <%= f.label :_destroy, class: "btn btn-danger remove_fields" do %>
-          <i class="fa fa-times" aria-hidden="true"></i>
-          <%= t "page.admin.action.remove" %>
-        <% end %>
-      </div>
+      <fieldset>
+        <div class="col-md-1">
+          <%= f.label t("views.admin.question.answer") %>
+        </div>
+        <div class="col-md-6">
+          <%= f.text_field :content, class: "form-control choice_answers" %>
+        </div>
+        <div class="col-md-2 space-top-remove">
+          <%= f.check_box :is_correct, class: "answers_checkbox" %>
+          <%= f.label :is_correct %>
+        </div>
+        <div class="col-md-2 space-top-remove">
+          <%= f.hidden_field :_destroy %>
+          <%= f.label :_destroy, class: "btn btn-danger remove_fields" do %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <%= t "page.admin.action.remove" %>
+          <% end %>
+        </div>
+      <fieldset>
     </div>
   </div>
 </div>
