@@ -256,4 +256,17 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  Warden::Manager.after_set_user except: :fetch do |record, warden, options|
+    if record.respond_to?(:update_tracked_fields!) && warden.authenticated?(options[:scope])
+      if record.admin?
+        Rails.logger.info t "config.initializers.devise.admin_login"
+      end
+    end
+  end
+
+  Warden::Manager.before_logout do |record, warden, options|
+    if record.admin?
+      Rails.logger.info t "config.initializers.devise.admin_logout"
+    end
+  end
 end
