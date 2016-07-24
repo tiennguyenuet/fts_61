@@ -259,14 +259,16 @@ Devise.setup do |config|
   Warden::Manager.after_set_user except: :fetch do |record, warden, options|
     if record.respond_to?(:update_tracked_fields!) && warden.authenticated?(options[:scope])
       if record.admin?
-        Rails.logger.info t "config.initializers.devise.admin_login"
+        Rails.logger.info "Admin login email: #{record.email},
+          ip:  #{warden.request.remote_ip}, at: #{Time.now}"
       end
     end
   end
 
   Warden::Manager.before_logout do |record, warden, options|
     if record.admin?
-      Rails.logger.info t "config.initializers.devise.admin_logout"
+      Rails.logger.info "Admin logout email: #{record.email},
+        ip:  #{warden.request.remote_ip}, at: #{Time.now}"
     end
   end
 end

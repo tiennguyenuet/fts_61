@@ -1,4 +1,6 @@
 class Examination < ActiveRecord::Base
+  include PublicActivity::Model
+
   belongs_to :user
   belongs_to :subject
   has_many :results, dependent: :destroy
@@ -8,6 +10,8 @@ class Examination < ActiveRecord::Base
     reject_if: lambda{|att| att[:question_id].blank?}, allow_destroy: true
 
   enum status: [:start, :testing, :unchecked, :checked]
+
+  tracked  owner: ->(controller, model) {controller && controller.current_user}
 
   before_create :create_questions
 
