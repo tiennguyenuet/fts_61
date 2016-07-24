@@ -8,6 +8,7 @@ class Ability
     else
       can :read, :all
       can [:create, :update], Examination
+      can [:create, :edit, :update], Question
     end
   end
 end

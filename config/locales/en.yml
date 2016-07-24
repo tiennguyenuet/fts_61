@@ -84,6 +84,8 @@ en:
         update_fail: "Update question failed!"
         cant_delete: "Question have result, can't delete"
         deleted: "Question has been deleted"
+        state: "State"
+        delete_fail: "Delete failed!"
     user:
       users: "All users"
       forget_password: "Forgot password"

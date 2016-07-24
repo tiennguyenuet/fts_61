@@ -19,7 +19,7 @@
             </li>
           <% else %>
             <li><%= link_to t("views.layouts.header.exams"), examinations_path %></li>
-            <li><%= link_to t("views.layouts.header.contribute_questions"), "#" %></li>
+            <li><%= link_to t("views.layouts.header.contribute_questions"), questions_path %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= current_user.name %><b class="caret"></b>
