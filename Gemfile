@@ -33,6 +33,7 @@ gem "devise", "~>3.4.1"
 # gem "capistrano-rails", group: :development
 gem "config"
 gem "kaminari"
+gem "public_activity"
 
 group :development, :test do
   gem "sqlite3"

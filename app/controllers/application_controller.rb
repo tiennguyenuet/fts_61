@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include CanCan::ControllerAdditions
+  include PublicActivity::StoreController
 
   before_action :authenticate_user!
 
