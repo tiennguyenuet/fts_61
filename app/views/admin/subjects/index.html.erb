@@ -1,6 +1,26 @@
  <% provide :title, t("views.admin.subjects.all_subject") %>
 <div class="row">
   <h1><%= t "views.admin.subjects.all_subject" %></h1>
+  <div class="subject-search">
+    <%= search_form_for [:admin, @search], class: "form-inline" do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name_cont, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :duration %>
+        <%= f.text_field :duration_eq, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :total_question %>
+        <%= f.text_field :total_question_eq, class: "form-control" %>
+      </div>
+      <%= button_tag(type: "submit", class: "btn btn-primary", 
+        name: "commit", value: "conceal") do %>
+        <span class="glyphicon glyphicon-search"></span> 
+      <% end %>
+    <% end %>
+  </div>   
   <div class="new_subject_button">
     <%= link_to t("views.admin.subjects.add_new"),
       new_admin_subject_path, class: "btn btn-primary glyphicon glyphicon-plus" %>

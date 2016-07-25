@@ -2,7 +2,8 @@ class Admin::UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @users = User.order(created_at: :desc)
+    @search = User.search params[:q]
+    @users = @search.result.order(created_at: :desc)
       .page(params[:page]).per Settings.per_page
   end
 

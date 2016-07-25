@@ -37,6 +37,7 @@ gem "public_activity"
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "figaro"
+gem "ransack"
 
 group :development, :test do
   gem "sqlite3"
