@@ -34,6 +34,9 @@ gem "devise", "~>3.4.1"
 gem "config"
 gem "kaminari"
 gem "public_activity"
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "figaro"
 
 group :development, :test do
   gem "sqlite3"
