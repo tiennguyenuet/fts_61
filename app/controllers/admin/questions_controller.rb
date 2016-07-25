@@ -100,6 +100,6 @@ class Admin::QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit :id, :subject_id, :content, :question_type,
-      answers_attributes: [:id, :content, :is_correct, :_destroy]
+      :state, answers_attributes: [:id, :content, :is_correct, :_destroy]
   end
 end

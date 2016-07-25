@@ -14,7 +14,8 @@
         <th><%= t "views.admin.question.question_title" %></th>
         <th><%= t "views.admin.question.subject" %></th>
         <th><%= t "views.admin.question.type" %></th>
-        <th><%= t "views.admin.question.action" %></th>
+        <th><%= t "views.admin.question.actions" %></th>
+        <th><%= t "views.admin.question.manage" %></th>
       </tr>
     </thead>
     <% @questions.each_with_index do |question, index| %>
@@ -33,6 +34,23 @@
               data: {confirm: t("views.admin.question.confirm")},
               class: "glyphicon glyphicon-trash text-danger" %>
           </td>
+          </td>
+            <% if question.waitting? %>
+              <td>
+                <%= form_for [:admin, question] do |f| %>
+                  <%= f.hidden_field :state, value: :accepted %>
+                  <%= f.submit t("views.admin.question.action.accept"),
+                    class: "col-md-4 btn btn-success" %>
+                <% end %>
+                <%= form_for [:admin, question] do |f| %>
+                  <%= f.hidden_field :state, value: :reject %>
+                  <%= f.submit t("views.admin.question.action.reject"),
+                    class: "col-md-4 btn btn-danger" %>
+                <% end %>
+              </td>
+            <% else %>
+              <td></td>
+            <% end %>
         <% else %>
           <tr><td><%= t "views.admin.question.no_question" %></td></tr>
         <% end %>

@@ -16,7 +16,7 @@
         <th><%= t "views.admin.question.subject" %></th>
         <th><%= t "views.admin.question.type" %></th>
         <th><%= t "views.admin.question.state" %></th>
-        <th><%= t "views.admin.question.action" %></th>
+        <th><%= t "views.admin.question.actions" %></th>
       </tr>
     </thead>
     <% @questions.each_with_index do |question, index| %>
@@ -28,7 +28,7 @@
           <td><%= question.question_type %></td>
           <td>
             <% if question.waitting? %>
-              <span class="text-info"><%= question.state %></span>
+              <p class="text-info"><%= question.state %></p>
             <% elsif question.accepted? %>
               <p class="text-success"><%= question.state %></p>
             <% else %>
