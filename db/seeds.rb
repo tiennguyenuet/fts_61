@@ -11,7 +11,7 @@ User.create!(
   role: 1,
   password: "12345678")
 
-20.times do |u|
+5.times do |u|
   name = "User" + (u+1).to_s
   email = "user#{u+1}@example.com"
   password = "12345678"

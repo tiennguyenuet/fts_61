@@ -33,6 +33,7 @@ en:
         contribute_questions: "Contribute Questions"
         account: "Account"
         exams: "My Exams"
+        questions: "Questions"
       footer:
         content: "Framgia Team"
     pagination:
@@ -73,7 +74,6 @@ en:
         question_title: "Question"
         subject: "Subject"
         type: "Type"
-        action: "Action"
         no_question: "Have no question"
         add_answer: "Add answer"
         answer: "Answer"
@@ -86,6 +86,13 @@ en:
         deleted: "Question has been deleted"
         state: "State"
         delete_fail: "Delete failed!"
+        state: "State"
+        actions : "Action"
+        quesitons: "Questions"
+        manage: "Manage"
+        action:
+          accept: "Accept"
+          reject: "Reject"
     user:
       users: "All users"
       forget_password: "Forgot password"
@@ -113,7 +120,7 @@ en:
   config:
     initializers:
       devise:
-        admin_login: "Admin login email: #{record.email}, 
+        admin_login: "Admin login email: #{record.email},
           ip:  #{warden.request.remote_ip}, at: #{Time.now}"
-        admin_logout: "Admin logout email: #{record.email}, 
+        admin_logout: "Admin logout email: #{record.email},
           ip:  #{warden.request.remote_ip}, at: #{Time.now}"
