@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20160715072056) do
     t.integer  "subject_id"
     t.integer  "question_type"
     t.string   "content"
-    t.string   "state"
+    t.integer  "state"
     t.string   "integer"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

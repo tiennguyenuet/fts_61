@@ -1,0 +1,50 @@
+<%= content_for :title do %>
+  <%= t "views.admin.question.question_title" %>
+<% end %>
+
+<%= link_to new_question_path, class: "btn btn-primary" do %>
+  <i class="fa fa-plus-circle" aria-hidden="true"></i>
+  <%= t "views.admin.question.add" %>
+<% end %>
+
+<div class="suggest_questions">
+  <table class="questions table table-hover table-bordered" id="suggest_questions_m">
+    <thead>
+      <tr class="info">
+        <th><%= t "views.admin.question.stt" %></th>
+        <th><%= t "views.admin.question.question_title" %></th>
+        <th><%= t "views.admin.question.subject" %></th>
+        <th><%= t "views.admin.question.type" %></th>
+        <th><%= t "views.admin.question.state" %></th>
+        <th><%= t "views.admin.question.action" %></th>
+      </tr>
+    </thead>
+    <% @questions.each_with_index do |question, index| %>
+      <tbody id="questions">
+        <% if @questions.size > 0 %>
+          <td class="text-right"><%= index + 1 %></td>
+          <td><%= question.content %></td>
+          <td><%= question.subject.name %></td>
+          <td><%= question.question_type %></td>
+          <td>
+            <% if question.waitting? %>
+              <span class="text-info"><%= question.state %></span>
+            <% elsif question.accepted? %>
+              <p class="text-success"><%= question.state %></p>
+            <% else %>
+              <p class="text-danger"><%= question.state %></p>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to t("views.admin.question.edit"),
+              edit_question_path(question),
+              class: "glyphicon glyphicon-edit" %>
+          </td>
+        <% else %>
+          <tr><td><%= t "views.admin.question.no_question" %></td></tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+  <%= paginate @questions %>
+</div>
