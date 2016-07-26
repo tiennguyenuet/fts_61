@@ -123,5 +123,6 @@ en:
       thank: "Thanks for joining and have a great day!"
     social_login:
       google: "Sign in with Google"
+      facebook: "Sign in with Facebook"
   helpers:
     base_title: "Framgia Testing System"
