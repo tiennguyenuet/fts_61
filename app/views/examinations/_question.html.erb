@@ -1,0 +1,15 @@
+<div class="row">
+  <span class="label label-default quesiton_number">
+    <%= t "views.exams.quesiton_number" %>
+    <%= f.index + 1 %>
+  </span>:
+  <strong><%= f.object.question.content %></strong>
+  <% f.object.question.answers.each do |answer| %>
+    <label class="radio">
+      <%= f.radio_button :answer_id, answer.id,
+        disabled: f.object.examination.unchecked? or f.object.exam.checked? %>
+      <%= answer.content %>
+    </label>
+  <% end %>
+  </br>
+</div>

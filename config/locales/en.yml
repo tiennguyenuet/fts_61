@@ -19,6 +19,10 @@ en:
     exams_controller:
       create_success: "Exam was created successfully!"
       create_error: "Create Error!"
+      default_spent_time: "00:00:00"
+      update:
+        success: "Exam update success"
+        failed: "Exam update failed"
   views:
     static_pages:
       home:
@@ -109,6 +113,9 @@ en:
       question_number: "Question number"
       spent_time: "Spent Time"
       score: "Score"
+      save: "Save"
+      finish: "Finish"
+      question_number: "Question number"
       time_format: "%d-%m-%Y %I:%M %p"
     shared:
       error_messages:

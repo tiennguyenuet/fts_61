@@ -1,27 +1,66 @@
-<div class="container">
+<div class="container content-form">
   <%= form_for :examination, html: {class: "form-inline"} do |f| %>
-    <%= f.collection_select :subject_id, Subject.all, :id, :name, 
+    <%= f.collection_select :subject_id, Subject.all, :id, :name,
       class: "form-control" %>
     <%= f.submit t("views.exams.create_exam"), class: "btn btn-primary" %>
   <% end %>
   <hr>
   <table class="table table-striped table-hover table-style">
     <thead>
-      <th><%= t ("views.exams.subject") %></th>
-      <th><%= t ("views.exams.created_date") %></th>
-      <th><%= t ("views.exams.status") %></th>
-      <th><%= t ("views.exams.duration") %></th>
-      <th><%= t ("views.exams.question_number") %></th>
-      <th></th>
+      <th><%= t "views.exams.subject" %></th>
+      <th><%= t "views.exams.created_date" %></th>
+      <th><%= t "views.exams.status" %></th>
+      <th><%= t "views.exams.duration" %></th>
+      <th><%= t "views.exams.question_number" %></th>
+      <th><%= t "admin.exams.spent_time" %></th>
+      <th><%= t "views.exams.score" %></th>
     </thead>
     <tbody>
       <% @examinations.each do |exam| %>
         <tr>
           <td><%= exam.subject.name %></td>
           <td><%= exam.created_at.strftime t "views.exams.time_format" %></td>
-          <td><%= exam.status %></td>
+          <td>
+            <% if exam.start? %>
+              <label class="label label-primary"><%= exam.status %></label>
+            <% elsif exam.testing? %>
+              <label class="label label-warning"><%= exam.status %></label>
+            <% elsif exam.unchecked? %>
+              <label class="label label-success"><%= exam.status %></label>
+            <% else %>
+              <label class="label label-info"><%= exam.status %></label>
+            <% end %>
+          </td>
           <td><%= exam.subject.duration %></td>
           <td><%= exam.subject.total_question %></td>
+          <td><%= default_spent_time exam %></td>
+          <td>
+            <% if exam.checked? %>
+              <%= exam.results.is_corrects.count %>/
+              <%= exam.subject.total_question %>
+            <% else %>
+              ---
+            <% end %>
+          </td>
+          <td>
+            <% if exam.start? %>
+              <td><%= link_to t("views.exams.start"),
+                examination_path(exam),
+                class: "col-md-8 btn btn-primary" %></td>
+            <% elsif exam.testing? %>
+              <td><%= link_to t("views.exams.view"),
+                examination_path(exam),
+                class: "col-md-8 btn btn-warning" %></td>
+            <% elsif exam.unchecked? %>
+              <td><%= link_to t("views.exams.view"),
+                examination_path(exam),
+                class: "col-md-8 btn btn-success" %></td>
+            <% else %>
+              <td><%= link_to t("views.exams.view"),
+                examination_path(exam),
+                class: "col-md-8 btn btn-info" %></td>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
