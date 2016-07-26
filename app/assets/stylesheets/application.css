@@ -67,3 +67,15 @@ h1 {
     color: $state-danger-text;
   }
 }
+
+.user-search {
+  margin-bottom: 1em;
+}
+
+.subject-search {
+  margin-bottom: 1em;
+}
+
+.question-search {
+  margin-bottom: 1em;
+}

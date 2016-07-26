@@ -1,6 +1,22 @@
 <% provide :title, t("views.admin.users.title") %>
 <div class="row">
   <h1><%= t "views.admin.users.all_user" %></h1>
+  <div class="user-search">
+    <%= search_form_for [:admin, @search], class: "form-inline" do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name_cont, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email_cont, class: "form-control" %>
+      </div>
+      <%= button_tag(type: "submit", class: "btn btn-primary", 
+        name: "commit", value: "conceal") do %>
+        <span class="glyphicon glyphicon-search"></span> 
+      <% end %>
+    <% end %>    
+  </div>
   <table class="table table-striped table-hover table-bordered">
     <thead>
       <th><%= t "views.admin.users.index" %></th>

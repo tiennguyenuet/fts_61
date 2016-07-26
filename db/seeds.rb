@@ -11,7 +11,7 @@ User.create!(
   role: 1,
   password: "12345678")
 
-5.times do |u|
+20.times do |u|
   name = "User" + (u+1).to_s
   email = "user#{u+1}@example.com"
   password = "12345678"
@@ -19,4 +19,16 @@ User.create!(
     name: name,
     email: email,
     password: password)
+end
+
+20.times do |u|
+  name = "Git" + (u+1).to_s
+  description = "Git for beginner"
+  total_question = 30
+  duration = 30
+  Subject.create!(
+    name: name,
+    description: description,
+    total_question: total_question,
+    duration: duration)
 end

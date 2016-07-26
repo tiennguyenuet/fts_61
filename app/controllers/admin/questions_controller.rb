@@ -3,7 +3,8 @@ class Admin::QuestionsController < ApplicationController
   before_action :load_all_subject, except: :destroy
 
   def index
-    @questions = Question.includes(:subject)
+    @search = Question.search params[:q]
+    @questions = @search.result.order(created_at: :desc)
       .page(params[:page]).per Settings.per_page
     respond_to do |format|
       format.html
