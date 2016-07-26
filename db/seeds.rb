@@ -20,3 +20,22 @@ User.create!(
     email: email,
     password: password)
 end
+
+
+Subject.create!(name: "Git",
+  total_question: 20,
+  description: "Learn git",
+  duration: "20")
+
+
+20.times do |i|
+  Question.create!(content: "Question#{i+1}", subject_id: 1)
+  Answer.create!(content: "Content 1", question_id: i,
+    is_correct: false)
+  Answer.create!(content: "Content 2", question_id: i,
+    is_correct: false)
+  Answer.create!(content: "Content 3", question_id: i,
+    is_correct: false)
+  Answer.create!(content: "Content 4", question_id: i,
+    is_correct: true)
+end

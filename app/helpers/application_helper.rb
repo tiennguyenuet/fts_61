@@ -12,4 +12,21 @@ module ApplicationHelper
     end
     link_to(name, "#", class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def calculate_spent_time examination
+    if examination.time_end - examination.time_start < examination.subject.duration * Settings.MINUTE
+      time = examination.time_end - examination.time_start
+    else
+      time = examination.duration * Settings.MINUTE
+    end
+    Time.at(time).utc.strftime Settings.TIME_FORMAT
+  end
+
+  def default_spent_time examination
+    if examination.start? or examination.time_end.nil?
+      content_tag :p, "00:00:00"
+    else
+      calculate_spent_time examination
+    end
+  end
 end

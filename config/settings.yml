@@ -1,6 +1,7 @@
 per_page: 10
-number_question1: 30
-number_question2: 60
-duration1: 20
-duration2: 30
 default_email: "khachieunk@gmail.com"
+time_limit: 30
+MINUTE: 60
+TIME_FORMAT: "%H:%M:%S"
+DATETIME: "%d/%m/%Y"
+default_time: "00:00:00"
