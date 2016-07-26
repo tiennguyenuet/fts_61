@@ -121,5 +121,7 @@ en:
     user_mailer:
       notify_subject_create: "%{subject} was created. Please check and learn more"
       thank: "Thanks for joining and have a great day!"
+    social_login:
+      google: "Sign in with Google"
   helpers:
     base_title: "Framgia Testing System"
