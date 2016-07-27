@@ -16,12 +16,17 @@
 @import "bootstrap";
 @import "bootstrap-sprockets";
 
-footer {
+.footer {
   width: 100%;
   text-align: center;
-  margin-top: 100px;
-  border-top: 1px solid #eaeaea;
-  padding: 20px;
+  font-weight: bold;
+  border-top: 1px solid #E1E1E1;
+  padding-top: 10px;
+  height: 25px;
+}
+
+.container {
+    min-height: 500px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -78,6 +83,9 @@ h1 {
 
 .question-search {
   margin-bottom: 1em;
+}
+.questions{
+  margin-top: 20px;
 }
 
 .timer {

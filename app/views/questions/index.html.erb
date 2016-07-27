@@ -3,7 +3,7 @@
 <% end %>
 
 <%= link_to new_question_path, class: "btn btn-primary" do %>
-  <i class="fa fa-plus-circle" aria-hidden="true"></i>
+  <i class="fa fa-plus-circle glyphicon glyphicon-plus" aria-hidden="true"></i>
   <%= t "views.admin.question.add" %>
 <% end %>
 
@@ -28,11 +28,11 @@
           <td><%= question.question_type %></td>
           <td>
             <% if question.waitting? %>
-              <p class="text-info"><%= question.state %></p>
+              <label class="label label-info"><%= question.state %></label>
             <% elsif question.accepted? %>
-              <p class="text-success"><%= question.state %></p>
+              <label class="label label-success"><%= question.state %></label>
             <% else %>
-              <p class="text-danger"><%= question.state %></p>
+              <label class="label label-danger"><%= question.state %></label>
             <% end %>
           </td>
           <td>

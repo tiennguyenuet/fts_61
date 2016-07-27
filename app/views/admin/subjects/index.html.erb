@@ -15,12 +15,12 @@
         <%= f.label :total_question %>
         <%= f.text_field :total_question_eq, class: "form-control" %>
       </div>
-      <%= button_tag(type: "submit", class: "btn btn-primary", 
+      <%= button_tag(type: "submit", class: "btn btn-primary",
         name: "commit", value: "conceal") do %>
-        <span class="glyphicon glyphicon-search"></span> 
+        <span class="glyphicon glyphicon-search"></span>
       <% end %>
     <% end %>
-  </div>   
+  </div>
   <div class="new_subject_button">
     <%= link_to t("views.admin.subjects.add_new"),
       new_admin_subject_path, class: "btn btn-primary glyphicon glyphicon-plus" %>

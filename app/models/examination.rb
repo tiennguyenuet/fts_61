@@ -16,7 +16,7 @@ class Examination < ActiveRecord::Base
 
   private
   def create_question
-    self.questions << self.subject.questions.all.shuffle
+    self.questions << self.subject.questions.valid_question.shuffle
       .take(self.subject.total_question)
   end
 end
