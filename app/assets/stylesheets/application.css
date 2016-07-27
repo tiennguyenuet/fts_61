@@ -79,3 +79,22 @@ h1 {
 .question-search {
   margin-bottom: 1em;
 }
+
+.timer {
+  border: 1px solid #E6E6E6;
+  background-color: #FFFFCC;
+  float: right;
+  position: fixed;
+  right: 70px;
+  top: 70px;
+}
+.radio {
+  padding-left: 20px;
+  font-weight: normal;
+}
+.btn-submit {
+  border-radius: 0px;
+  margin: 10px;
+  width: 20%;
+  display: inline-block;
+}
