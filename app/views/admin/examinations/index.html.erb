@@ -1,0 +1,57 @@
+<% provide :title, t("views.admin.exams.user_exams") %>
+<div class="row">
+  <h1><%= t "views.admin.exams.title" %></h1>
+  <div class="container">
+    <table class="table table-striped table-hover table-style">
+      <thead>
+        <th><%= t "views.exams.user" %></th>
+        <th><%= t "views.exams.subject" %></th>
+        <th><%= t "views.exams.created_date" %></th>
+        <th><%= t "views.exams.status" %></th>
+        <th><%= t "views.exams.duration" %></th>
+        <th><%= t "views.exams.question_number" %></th>
+        <th><%= t "admin.exams.spent_time" %></th>
+        <th><%= t "views.exams.score" %></th>
+        <th><%= t "views.exams.action" %></th>
+      </thead>
+      <tbody>
+        <% @examinations.each do |exam| %>
+          <% if exam.unchecked? || exam.checked? %>
+            <tr>
+              <td><%= exam.user.name %></td>
+              <td><%= exam.subject.name %></td>
+              <td><%= exam.created_at.strftime t "views.exams.time_format" %></td>
+              <td>
+                <% if exam.checked? %>
+                  <label class="label label-success"><%= exam.status %></label>
+                <% elsif exam.unchecked? %>
+                  <label class="label label-info"><%= exam.status %></label>
+                <% elsif exam.start? %>
+                  <label class="label label-primary"><%= exam.status %></label>
+                <% else %>
+                  <label class="label label-warning"><%= exam.status %></label>
+                <% end %>
+              </td>
+              <td><%= exam.subject.duration %></td>
+              <td><%= exam.subject.total_question %></td>
+              <td><%= default_spent_time exam %></td>
+              <td>
+                <% if exam.checked? %>
+                  <%= exam.results.is_corrects.count %>/
+                  <%= exam.subject.total_question %>
+                <% else %>
+                  ---
+                <% end %>
+              </td>
+              <td>
+                <%= link_to t("views.exams.show"), 
+                  admin_examination_path(exam), class: "btn btn-success" %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>    
+    </table>
+    <%= paginate @examinations %>
+  </div>
+</div>

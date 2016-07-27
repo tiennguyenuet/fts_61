@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :subjects
     resources :users, only: [:index, :show, :destroy]
     resources :questions
+    resources :examinations, only: [:index, :show, :update]
   end
   resources :questions
 end
