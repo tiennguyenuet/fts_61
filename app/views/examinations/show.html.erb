@@ -69,6 +69,8 @@
               </div>
             </div>
           <% end %>
+          <%= social_share_button_tag(@examination.subject.name, 
+            url: "lvh.me:3000/examinations/#{@examination.id}") %>
         </ol>
       <% end %>
     </div>

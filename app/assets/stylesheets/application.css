@@ -12,9 +12,11 @@
  *
  *= require_tree .
  *= require_self
+ *= require social-share-button
  */
 @import "bootstrap";
 @import "bootstrap-sprockets";
+@import "social-share-button";
 
 .footer {
   width: 100%;
@@ -105,4 +107,14 @@ h1 {
   margin: 10px;
   width: 20%;
   display: inline-block;
+}
+
+$size: 30px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
 }

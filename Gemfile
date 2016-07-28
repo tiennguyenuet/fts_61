@@ -39,6 +39,7 @@ gem "omniauth-google-oauth2"
 gem "omniauth-facebook"
 gem "figaro"
 gem "ransack"
+gem "social-share-button"
 
 group :development, :test do
   gem "sqlite3"
