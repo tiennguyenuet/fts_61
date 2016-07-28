@@ -40,6 +40,8 @@ gem "omniauth-facebook"
 gem "figaro"
 gem "ransack"
 gem "social-share-button"
+gem "sidekiq"
+gem "letter_opener"
 
 group :development, :test do
   gem "sqlite3"

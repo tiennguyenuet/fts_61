@@ -12,6 +12,7 @@ class Admin::ExaminationsController < ApplicationController
 
   def update
     if params[:commit] == "checked" && @examination.checked!
+      SendResultWorker.perform_async @examination.id
       flash.now[:success] = t "controllers.admin.exams_controller.check_success"
       redirect_to admin_examinations_path
     else

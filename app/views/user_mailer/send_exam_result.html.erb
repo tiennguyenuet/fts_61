@@ -1,0 +1,8 @@
+<p>
+  <%= t "views.user_mailer.score" %>
+  <span>
+    <%= @exam.results.is_corrects.count %>/
+    <%= @exam.subject.total_question %>
+  </span>
+</p>
+<p><%= t "views.user_mailer.thank" %></p>
