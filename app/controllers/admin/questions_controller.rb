@@ -25,6 +25,7 @@ class Admin::QuestionsController < ApplicationController
     if @answers.nil?
       flash[:danger] = t "views.admin.question.no_answer"
       render action: :new
+      return
     else
       @answers.each do |answer|
         if answer[1][:is_correct].to_i == 1

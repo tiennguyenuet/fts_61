@@ -13,4 +13,7 @@ class Question < ActiveRecord::Base
     reject_if: proc {|answer| answer[:content].blank?}
 
   validates :content, presence: true
+  scope :valid_question, -> do
+    where("state IS NOT 2")
+  end
 end

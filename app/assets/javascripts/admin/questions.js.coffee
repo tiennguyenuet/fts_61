@@ -1,4 +1,4 @@
-$(document).ready ->
+$(document).on 'ready page:load', ->
   $('#question_question_type').on 'change', ->
     question_type =  $(this).val()
     answer_text = '<div class="text_question">'
@@ -9,7 +9,9 @@ $(document).ready ->
       $('.text_question').removeClass('hide')
       $('.choice_question').addClass('hide')
       $('#answer_field').append(answer_text)
+      $('.add_fields').addClass('hide')
     if question_type == 'single' || question_type == 'multiple'
       $('.text_question').remove()
       $('.choice_question').removeClass('hide')
+      $('.add_fields').removeClass('hide')
       $('.add_fields').show()

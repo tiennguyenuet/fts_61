@@ -1,11 +1,5 @@
 <%= form_for @question do |f| %>
-  <% if @question.errors.full_messages.size > 0 %>
-    <div class="error_alert">
-      <% @question.errors.full_messages.each do |message| %>
-        <p class="text-danger"><%= message %></p>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", object: @question %>
   <div class="field">
     <%= f.label :subject_id %>
     <%= f.select :subject_id,
@@ -28,9 +22,6 @@
     <%= link_to_add_fields t("views.admin.question.add_answer"), f, :answers %>
   </div>
   <div class="clearfix"></div>
-  <button type="reset" class="btn btn-warning form-control reset">
-    <%= t "views.admin.question.reset" %>
-  </button>
-  <%= f.submit t("views.admin.question.save"),
-    class: "btn btn-primary form-control save-answer" %>
+  <%= f.submit t("views.admin.question.suggest"),
+    class: "btn btn-primary save-answer" %>
 <% end %>

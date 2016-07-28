@@ -1,4 +1,5 @@
 class Admin::SubjectsController < ApplicationController
+  before_action :check_admin
   load_and_authorize_resource
 
   def index

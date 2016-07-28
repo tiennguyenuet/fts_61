@@ -1,12 +1,10 @@
 var ready
 ready = function(){
-  $('body').on('DOMNodeInserted', function(){
-    make_radio_from_checkbox();
-  })
+  make_radio_from_checkbox();
 }
 
 function make_radio_from_checkbox(){
-  $('.answers_checkbox').click(function () {
+  $(document).on('click','.answers_checkbox',function () {
     if ($('#question_question_type').val() == 'single'){
       $('.answers_checkbox').not(this).attr('checked', false);
     }

@@ -17,7 +17,7 @@ module ApplicationHelper
     if examination.time_end - examination.time_start < examination.subject.duration * Settings.MINUTE
       time = examination.time_end - examination.time_start
     else
-      time = examination.duration * Settings.MINUTE
+      time = examination.subject.duration * Settings.MINUTE
     end
     Time.at(time).utc.strftime Settings.TIME_FORMAT
   end
