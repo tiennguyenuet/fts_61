@@ -16,6 +16,9 @@ en:
       users_controller:
         delete_success: "Deleted!"
         delete_error: "Delete error!"
+      exams_controller:
+        check_success: "Checked!"
+        check_error: "Check Error!"
     exams_controller:
       create_success: "Exam was created successfully!"
       create_error: "Create Error!"
@@ -104,12 +107,16 @@ en:
         action:
           accept: "Accept"
           reject: "Reject"
+      exams:
+        user_exams: "Examinations"
+        title: "All Examinations"
     user:
       users: "All users"
       forget_password: "Forgot password"
       change_password: "Change your password"
       edit: "Edit Profile"
     exams:
+      user: "User"
       create_exam: "Create Exam"
       subject: "Subject"
       created_date: "Created Date"
@@ -122,6 +129,10 @@ en:
       finish: "Finish"
       question_number: "Question number"
       time_format: "%d-%m-%Y %I:%M %p"
+      check: "Check"
+      show: "Show"
+      action: "Action"
+      no_exam: "No Exams"
     shared:
       error_messages:
         message: "The form contains"
