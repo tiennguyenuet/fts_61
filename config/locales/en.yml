@@ -144,6 +144,8 @@ en:
     user_mailer:
       notify_subject_create: "%{subject} was created. Please check and learn more"
       thank: "Thanks for joining and have a great day!"
+      send_result_title: "Exam's Result"
+      score: "Your Result: "
     social_login:
       google: "Sign in with Google"
       facebook: "Sign in with Facebook"
