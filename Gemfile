@@ -42,6 +42,8 @@ gem "ransack"
 gem "social-share-button"
 gem "sidekiq"
 gem "letter_opener"
+gem "delayed_job_active_record"
+gem "daemons"
 
 group :development, :test do
   gem "sqlite3"
