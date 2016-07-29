@@ -45,7 +45,7 @@ h1 {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: gray;
+  color: green;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -54,6 +54,15 @@ h1 {
     color: white;
     text-decoration: none;
   }
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #090909 !important;
+}
+
+.navbar-default {
+    background-color: #78909c;
+    border-color: #e7e7e7;
 }
 
 .new_subject_button {
@@ -86,6 +95,11 @@ h1 {
 .question-search {
   margin-bottom: 1em;
 }
+
+.exam-search{
+  margin-bottom: 1em;
+}
+
 .questions{
   margin-top: 20px;
 }
@@ -117,4 +131,40 @@ $size: 30px;
     height: $size;
     width: $size;
   }
+}
+
+.activity{
+  align-content: left;
+}
+
+.pull-left{
+  float: left !important;
+}
+
+.pull-right{
+  float: right !important;
+}
+
+.button-action{
+  margin-top: 10px;
+}
+
+.add_fields{
+  margin-right: 150px;
+}
+
+.update{
+  margin-left: -60px;
+}
+
+.back{
+  margin-left: 15px;
+}
+
+.add_ques{
+  margin-bottom: 20px;
+}
+
+.add_subject{
+  width: 10%;
 }

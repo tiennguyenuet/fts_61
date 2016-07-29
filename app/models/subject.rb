@@ -10,7 +10,7 @@ class Subject < ActiveRecord::Base
   validates :duration, presence: true,
     numericality: {only_integer: true, greater_than: 0}
 
-  after_save :notify_user
+  after_create :notify_user
 
   def notify_user
     UserNotification.new(self).send_notify_user

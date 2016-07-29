@@ -1,18 +1,32 @@
 <% provide :title, t("views.admin.exams.user_exams") %>
+<h1><%= t "views.admin.exams.title" %></h1>
 <div class="row">
-  <h1><%= t "views.admin.exams.title" %></h1>
   <div class="container">
-    <table class="table table-striped table-hover table-style">
+    <div class="exam-search">
+      <%= search_form_for [:admin, @search], class: "form-inline" do |f| %>
+        <div class="form-group">
+          <%= f.label :subject_examinations_subject_name %>
+          <%= f.text_field :subject_examinations_subject_name_cont, class: "form-control" %>
+        </div>
+        <%= button_tag(type: "submit", class: "btn btn-primary",
+          name: "commit", value: "conceal") do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+      <% end %>
+    </div>
+    <table class="table table-striped table-hover table-style" id="admin_exam">
       <thead>
-        <th><%= t "views.exams.user" %></th>
-        <th><%= t "views.exams.subject" %></th>
-        <th><%= t "views.exams.created_date" %></th>
-        <th><%= t "views.exams.status" %></th>
-        <th><%= t "views.exams.duration" %></th>
-        <th><%= t "views.exams.question_number" %></th>
-        <th><%= t "admin.exams.spent_time" %></th>
-        <th><%= t "views.exams.score" %></th>
-        <th><%= t "views.exams.action" %></th>
+        <tr class="info">
+          <th><%= t "views.exams.user" %></th>
+          <th><%= t "views.exams.subject" %></th>
+          <th><%= t "views.exams.created_date" %></th>
+          <th><%= t "views.exams.status" %></th>
+          <th><%= t "views.exams.duration" %></th>
+          <th><%= t "views.exams.question_number" %></th>
+          <th><%= t "admin.exams.spent_time" %></th>
+          <th><%= t "views.exams.score" %></th>
+          <th class="actions"><%= t "views.exams.action" %></th>
+        </tr>
       </thead>
       <tbody>
         <% @examinations.each do |exam| %>
@@ -32,7 +46,7 @@
                   <label class="label label-warning"><%= exam.status %></label>
                 <% end %>
               </td>
-              <td><%= exam.subject.duration %></td>
+              <td><%= exam.subject.duration %> minutes</td>
               <td><%= exam.subject.total_question %></td>
               <td><%= default_spent_time exam %></td>
               <td>
@@ -44,13 +58,13 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to t("views.exams.show"), 
+                <%= link_to t("views.exams.show"),
                   admin_examination_path(exam), class: "btn btn-success" %>
               </td>
             </tr>
           <% end %>
         <% end %>
-      </tbody>    
+      </tbody>
     </table>
     <%= paginate @examinations %>
   </div>
