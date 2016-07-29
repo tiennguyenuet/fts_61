@@ -3,8 +3,13 @@ class Admin::ExaminationsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @examinations = Examination.order(created_at: :desc)
+    @search = Examination.search params[:q]
+    @examinations = @search.result.order(created_at: :desc)
       .page(params[:page]).per Settings.per_page
+    respond_to do |format|
+      format.html
+      format.json{render json: @examinations}
+    end
   end
 
   def show

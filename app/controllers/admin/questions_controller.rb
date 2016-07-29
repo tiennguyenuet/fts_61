@@ -1,7 +1,8 @@
 class Admin::QuestionsController < ApplicationController
+  before_action :check_admin
   load_and_authorize_resource
   before_action :load_all_subject, except: :destroy
-
+  before_action :check_exist_exam, only: :destroy
   def index
     @search = Question.search params[:q]
     @questions = @search.result.order(created_at: :desc)
@@ -23,7 +24,7 @@ class Admin::QuestionsController < ApplicationController
     quantity = 0
     flag = false
     if @answers.nil?
-      flash[:danger] = t "views.admin.question.no_answer"
+      @message = t "views.admin.question.no_answer"
       render action: :new
       return
     else
@@ -35,10 +36,14 @@ class Admin::QuestionsController < ApplicationController
       if @question[:question_type] == 0
         if quantity == 1
           flag = true
+        else
+          @message = t "views.admin.question.single_question_error"
         end
       elsif @question[:question_type] == 1
         if quantity == 2
           flag = true
+        else
+          @message = t "views.admin.question.multiple_question_error"
         end
       else
         flag = true
@@ -50,11 +55,11 @@ class Admin::QuestionsController < ApplicationController
         redirect_to admin_questions_path
       else
         flash[:danger] = t "views.admin.question.create_fail"
-        redirect_to :back
+        render action: :new
       end
     else
-      flash[:danger] = t "views.admin.question.create_fail"
-      redirect_to :back
+      flash[:danger] = @message
+      render action: :new
     end
   end
 
@@ -95,6 +100,12 @@ class Admin::QuestionsController < ApplicationController
   end
 
   private
+  def check_exist_exam
+    if @question.results.any?
+      flash[:danger] = "views.admin.question.cant_delete"
+      redirect_to admin_questions_path
+    end
+  end
 
   def load_all_subject
     @subjects = Subject.all

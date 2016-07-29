@@ -32,19 +32,18 @@ class QuestionsController < ApplicationController
           flash[:danger] = t "views.admin.question.update_fail"
           render action: :edit
         end
-        format.json{render @question.error, status: :unprocessable_entity}
+        format.json{render @question.errors, status: :unprocessable_entity}
       end
     end
   end
 
   def create
     @question = current_user.questions.new question_params
-    @question.state = 0
     @answers = question_params[:answers_attributes]
     quantity = 0
     flag = false
     if @answers.nil?
-      flash[:danger] = t "views.admin.question.no_answer"
+      @message = t "views.admin.question.no_answer"
       render action: :new
       return
     else
@@ -56,10 +55,14 @@ class QuestionsController < ApplicationController
       if @question[:question_type] == 0
         if quantity == 1
           flag = true
+        else
+          @message = t "views.admin.question.single_question_error"
         end
       elsif @question[:question_type] == 1
         if quantity == 2
           flag = true
+        else
+          @message = t "views.admin.question.multiple_question_error"
         end
       else
         flag = true
@@ -71,17 +74,17 @@ class QuestionsController < ApplicationController
         redirect_to questions_path
       else
         flash[:danger] = t "views.admin.question.create_fail"
-        redirect_to :back
+        render action: :new
       end
     else
-      flash[:danger] = t "views.admin.question.create_fail"
-      redirect_to :back
+      flash[:danger] = @message
+      render action: :new
     end
   end
 
   private
   def question_params
-    params.require(:question).permit :id, :content, :question_type, :subject_id,
+    params.require(:question).permit :id, :content, :question_type, :subject_id, :state,
       :user_id, answers_attributes: [:id, :content, :is_correct, :_destroy]
   end
 

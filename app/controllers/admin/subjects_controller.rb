@@ -1,7 +1,7 @@
 class Admin::SubjectsController < ApplicationController
   before_action :check_admin
   load_and_authorize_resource
-
+  before_action :check_delete_subject, only: :destroy
   def index
     @search = Subject.search params[:q]
     @subjects = @search.result.order(created_at: :desc)
@@ -51,5 +51,12 @@ class Admin::SubjectsController < ApplicationController
   def subject_params
     params.require(:subject).permit :name, :total_question,
       :duration, :description
+  end
+
+  def check_delete_subject
+    if @subject.examinations.any?
+      flash[:danger] = t "controllers.admin.subjects_controller.cant_delete"
+      redirect_to admin_subjects_path
+    end
   end
 end

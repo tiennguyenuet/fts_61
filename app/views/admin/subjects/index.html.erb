@@ -22,17 +22,22 @@
     <% end %>
   </div>
   <div class="new_subject_button">
-    <%= link_to t("views.admin.subjects.add_new"),
-      new_admin_subject_path, class: "btn btn-primary glyphicon glyphicon-plus" %>
+    <%= link_to new_admin_subject_path do %>
+      <span class="btn btn-primary glyphicon glyphicon-plus add_subject">
+        <%= t("views.admin.subjects.add_new")%>
+      </span>
+    <% end %>
   </div>
-  <table class="table table-striped table-hover table-bordered">
+  <table class="table table-striped table-hover table-bordered" id="admin_subject">
     <thead>
-      <th><%= t "views.admin.subjects.index" %></th>
-      <th><%= t "views.admin.subjects.name" %></th>
-      <th><%= t "views.admin.subjects.total_question" %></th>
-      <th><%= t "views.admin.subjects.duration" %></th>
-      <th><%= t "views.admin.subjects.description" %></th>
-      <th></th>
+      <tr class="info">
+        <th><%= t "views.admin.subjects.index" %></th>
+        <th><%= t "views.admin.subjects.name" %></th>
+        <th><%= t "views.admin.subjects.total_question" %></th>
+        <th><%= t "views.admin.subjects.duration" %></th>
+        <th><%= t "views.admin.subjects.description" %></th>
+        <th class="actions"><%= t "views.admin.subjects.actions" %></th>
+      </tr>
     </thead>
     <tbody>
       <% @subjects.each_with_index do |subject, index| %>
@@ -40,16 +45,19 @@
           <td><%= index + 1 %></td>
           <td><%= subject.name %></td>
           <td><%= subject.total_question %></td>
-          <td><%= subject.duration %></td>
+          <td><%= subject.duration %> minutes</td>
           <td><%= subject.description %></td>
           <td>
-            <%= link_to t("views.admin.subjects.edit"),
-              edit_admin_subject_path(subject),
-              class: "glyphicon glyphicon-edit" %> |
-            <%= link_to t("views.admin.subjects.delete"),
-              admin_subject_path(subject),
-              method: :delete, data: {confirm: t("views.admin.subjects.delete_confirm")},
-              class: "glyphicon glyphicon-trash text-danger" %>
+            <%= link_to edit_admin_subject_path(subject),
+              data: {toggle: "tooltip", placement: "top"}, title: t("edit") do %>
+              <span class= "glyphicon glyphicon-edit"></span>
+            <% end %> |
+            <%= link_to admin_subject_path(subject),
+              method: :delete, data: {toggle: "tooltip", placement: "top",
+                confirm: t("views.admin.subjects.delete_confirm")},
+                title: t("delete") do %>
+              <span class="glyphicon glyphicon-trash text-danger"></span>
+            <% end %>
           </td>
         </tr>
       <% end %>
