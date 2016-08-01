@@ -5,3 +5,7 @@ MINUTE: 60
 TIME_FORMAT: "%H:%M:%S"
 DATETIME: "%d/%m/%Y"
 default_time: "00:00:00"
+num_answer_single: 1
+single: 0
+multiple: 2
+no_answer: 0
