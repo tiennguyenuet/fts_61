@@ -24,13 +24,15 @@ class Examination < ActiveRecord::Base
 
   def notify_user
     send_email = SendEmail.new self
-    Delayed::Job.enqueue send_email, 1, 1.minute.from_now
+    Delayed::Job.enqueue send_email, 1, 80.minutes.from_now
   end
 
   def update_delayed_job
     time_from_create_exam = self.updated_at - self.created_at
     if time_from_create_exam.to_i < Settings.time_to_notify
-      Delayed::Job.find_by(created_at: self.created_at).delete
+      if Delayed::Job.find_by(created_at: self.created_at).present?
+        Delayed::Job.find_by(created_at: self.created_at).delete
+      end
     end
   end
 end

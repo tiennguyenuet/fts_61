@@ -1,13 +1,13 @@
 <div class="panel panel-default col m6 question_answers">
   <li>
-    <strong><%= f.object.question.content %></strong>
-    <% f.object.question.answers.each do |answer| %>
-      <label class="radio">
-        <%= f.radio_button :answer_id, answer.id,
-          disabled: f.object.examination.unchecked? or f.object.exam.checked? %>
-        <%= answer.content %>
-      </label>
-    <% end %>
+  <strong><%= f.object.question.content %></strong>
+  <% f.object.question.answers.each do |answer| %>
+    <label class="radio">
+      <%= f.radio_button :answer_id, answer.id,
+        disabled: f.object.examination.unchecked? or f.object.exam.checked? %>
+      <%= answer.content %>
+    </label>
+  <% end %>
   </li>
   </br>
 </div>

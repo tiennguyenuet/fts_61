@@ -27,14 +27,14 @@ Subject.create!(name: "Git",
   duration: "20")
 
 
-30.times do |i|
+20.times do |i|
   Question.create!(question_type: 0, state: 1, content: "Question#{i+1}", subject_id: 1)
-  Answer.create!(content: "Content 1", question_id: i,
+  Answer.create!(content: "Content 1", question_id: i+1,
     is_correct: false)
-  Answer.create!(content: "Content 2", question_id: i,
+  Answer.create!(content: "Content 2", question_id: i+1,
     is_correct: false)
-  Answer.create!(content: "Content 3", question_id: i,
+  Answer.create!(content: "Content 3", question_id: i+1,
     is_correct: false)
-  Answer.create!(content: "Content 4", question_id: i,
+  Answer.create!(content: "Content 4", question_id: i+1,
     is_correct: true)
 end
