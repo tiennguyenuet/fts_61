@@ -9,6 +9,8 @@ $(document).on 'ready page:load', ->
       $('.text_question').removeClass('hide')
       $('.choice_question').addClass('hide')
       $('#answer_field').append(answer_text)
+      $('.materialize-textarea').css('width', '800px')
+      $('.materialize-textarea').css('height', '150px')
       $('.add_fields').addClass('hide')
     if question_type == 'single' || question_type == 'multiple'
       $('.text_question').remove()

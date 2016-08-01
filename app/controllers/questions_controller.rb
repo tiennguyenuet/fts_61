@@ -52,14 +52,14 @@ class QuestionsController < ApplicationController
           quantity += 1
         end
       end
-      if @question[:question_type] == 0
-        if quantity == 1
+      if @question[:question_type] == Settings.single
+        if quantity == Settings.num_answer_single
           flag = true
         else
           @message = t "views.admin.question.single_question_error"
         end
-      elsif @question[:question_type] == 1
-        if quantity == 2
+      elsif @question[:question_type] == Settings.multiple
+        if quantity > Settings.num_answer_single
           flag = true
         else
           @message = t "views.admin.question.multiple_question_error"
@@ -84,8 +84,8 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit :id, :content, :question_type, :subject_id, :state,
-      :user_id, answers_attributes: [:id, :content, :is_correct, :_destroy]
+    params.require(:question).permit :id, :content, :question_type, :subject_id,
+    :state, :user_id, answers_attributes: [:id, :content, :is_correct, :_destroy]
   end
 
   def load_all_subject

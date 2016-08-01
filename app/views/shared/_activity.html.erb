@@ -1,16 +1,15 @@
-<div>
-  <p>   
-    <% if activity.owner == current_user %>
-      <%= link_to activity.owner.name, activity.owner %>
-      <% if activity.key.include? "create" %>
-        <%= t "views.shared.activity.create" %>
-      <% else activity.key.include? "update" %>
-        <%= t "views.shared.activity.edit" %>
-      <% end %>
-      <%=link_to activity.trackable_type %>
-      <% activity.trackable_id %>
-      <%= time_ago_in_words(activity.created_at) %>
-      <%= t "views.shared.activity.ago" %>
+<p>
+  <% if activity.owner == current_user %>
+    <%= link_to activity.owner.name, activity.owner %>
+    <% if activity.key.include? "create" %>
+      <%= t "views.shared.activity.create" %>
+    <% else activity.key.include? "update" %>
+      <%= t "views.shared.activity.edit" %>
     <% end %>
-  </p>
-</div>
+    <%=link_to activity.trackable_type %>
+    <% activity.trackable_id %>
+    <%= time_ago_in_words(activity.created_at) %>
+    <%= t "views.shared.activity.ago" %>
+  <% end %>
+</p>
+

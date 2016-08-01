@@ -168,3 +168,17 @@ $size: 30px;
 .add_subject{
   width: 10%;
 }
+
+.create_subject{
+  margin-top: 20px;
+}
+
+.new_acc{
+  margin-top: 10px;
+}
+
+.new_user{
+  box-shadow: 5px 5px  5px 5px grey;
+  margin: 2%;
+  padding:2% ;
+}

@@ -13,6 +13,8 @@ class Question < ActiveRecord::Base
 
   validates :content, presence: true, length: {minimum: 2}
   validates_associated  :answers
+  validate :validate_answers
+
   scope :valid_question, -> do
     where("state IS NOT 2")
   end
@@ -20,10 +22,10 @@ class Question < ActiveRecord::Base
   def validate_answers
     unless self.text?
       if answers.size <= 1
-        errors.add(:answer, I18n.t("controller.admin.question.validate_number_answer"))
+        errors.add(:answer, I18n.t("controllers.admin.question.validate_number_answer"))
       end
       if answers.reject{|answer| !answer.is_correct?}.count == 0
-        errors.add(:correct_answers, I18n.t("controller.admin.question.number_correct"))
+        errors.add(:correct_answers, I18n.t("controllers.admin.question.number_correct"))
       end
     end
   end
