@@ -154,6 +154,8 @@ en:
       thank: "Thanks for joining and have a great day!"
       send_result_title: "Exam's Result"
       score: "Your Result: "
+      notify_do_exam_title: "Do exam"
+      notify_do_exam: "New Exam was created 8 hours ago. Please do your exam!"
     social_login:
       google: "Sign in with Google"
       facebook: "Sign in with Facebook"
