@@ -2,9 +2,9 @@
   <%= t "views.layouts.header.signin" %>
 <% end %>
 
+<center><h2><%= t "views.layouts.header.signin" %></h2></center>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <h2><%= t "views.layouts.header.signin" %></h2>
     <%= form_for(resource, as: resource_name,
       url: session_path(resource_name)) do |f| %>
 
@@ -20,13 +20,13 @@
         <%= f.label :remember_me %>
       <% end -%><br/>
 
-      <%= f.submit t("views.layouts.header.signin"), class: "btn btn-primary" %>
-    <% end %>
+      <%= f.submit t("views.layouts.header.signin"), class: "btn btn-primary form-control" %>
 
-    <%= render "devise/shared/links" %>
-    <%= link_to t("views.social_login.google"),
-      user_omniauth_authorize_path(:google_oauth2) %><br/>
-    <%= link_to t("views.social_login.facebook"),
-      user_omniauth_authorize_path(:facebook) %>
+      <%= render "devise/shared/links" %>
+      <%= link_to t("views.social_login.google"),
+        user_omniauth_authorize_path(:google_oauth2) %><br/>
+      <%= link_to t("views.social_login.facebook"),
+        user_omniauth_authorize_path(:facebook) %>
+    <% end %>
   </div>
 </div>

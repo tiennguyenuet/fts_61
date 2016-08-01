@@ -9,22 +9,22 @@
     </div>
     <div class="col-md-8 col-md-offset-1">
       <%= form_for @examination do |f| %>
-        <ol>
-          <%= f.fields_for :results do |result| %>
+        <%= f.fields_for :results do |result| %>
+          <ol>
             <%= render "question", f: result %>
-          <% end %>
-          <div class="col-md-8 col-md-offset-1">
-            <button type="submit" value="testing" name="examination[status]"
-              class="btn btn-primary btn-submit submit-time-out">
-              <%= t "views.exams.save" %>
-            </button>
-            <button type="submit" id="finish" value="unchecked"
-              name="examination[status]"
-              class="btn btn-danger btn-submit pull-right">
-              <%= t "views.exams.finish" %>
-            </button>
-          </div>
-        </ol>
+          </ol>
+        <% end %>
+        <div class="col-md-8 col-md-offset-1">
+          <button type="submit" value="testing" name="examination[status]"
+            class="btn btn-primary btn-submit submit-time-out">
+            <%= t "views.exams.save" %>
+          </button>
+          <button type="submit" id="finish" value="unchecked"
+            name="examination[status]"
+            class="btn btn-danger btn-submit pull-right">
+            <%= t "views.exams.finish" %>
+          </button>
+        </div>
       <% end %>
     </div>
   <% else %>
@@ -41,20 +41,16 @@
           <%= f.fields_for :results do |result| %>
             <div class="panel panel-default col m6 question_answers">
               <li>
-                <span class="label label-default quesiton_number">
-                  <%= t "views.exams.question_number"%>
-                  <%= result.index + 1 %>:
-                </span>
                 <label><%= result.object.question.content %>?</label>
               </li>
               <div class="answers">
                 <% result.object.question.answers.each do |answer| %>
                   <%= result.hidden_field :question_id  %>
                   <% if result.object.examination.checked? %>
-                    <% if answer.is_correct? %>
-                      <p class="text_success">
+                    <% if answer.is_correct? && answer.id == result.object.answer_id%>
+                      <p class="text-success">
                     <% else %>
-                      <p class="red-warning">
+                      <p class="text-warning">
                     <% end %>
                   <% else %>
                     <p>
@@ -69,7 +65,7 @@
               </div>
             </div>
           <% end %>
-          <%= social_share_button_tag(@examination.subject.name, 
+          <%= social_share_button_tag(@examination.subject.name,
             url: "lvh.me:3000/examinations/#{@examination.id}") %>
         </ol>
       <% end %>
