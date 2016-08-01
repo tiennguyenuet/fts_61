@@ -4,7 +4,8 @@ class ExaminationsController < ApplicationController
   def index
     @subject = Subject.all
     @examination = Examination.new
-    @examinations = current_user.examinations.order(created_at: :desc)
+    @search = current_user.examinations.search params[:q]
+    @examinations = @search.result.order(created_at: :desc)
       .page(params[:page]).per Settings.per_page
   end
 

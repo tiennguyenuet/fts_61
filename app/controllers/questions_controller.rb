@@ -4,7 +4,8 @@ class QuestionsController < ApplicationController
   before_action :load_all_subject
 
   def index
-    @questions = Question.where(user_id: current_user.id).page(params[:page])
+    @search = current_user.questions.search params[:q]
+    @questions = @search.result.order(created_at: :desc).page(params[:page])
       .per Settings.per_page
   end
 
