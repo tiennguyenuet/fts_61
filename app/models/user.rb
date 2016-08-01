@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   enum role: [:user, :admin]
 
-  validates :name, presence: true, length: {maximum: 50},
+  validates :name, presence: true, length: {maximum: 30},
     uniqueness: {case_sensitive: true}
 
   class << self

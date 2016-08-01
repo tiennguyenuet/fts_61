@@ -33,14 +33,14 @@ class Admin::QuestionsController < ApplicationController
           quantity += 1
         end
       end
-      if @question[:question_type] == 0
-        if quantity == 1
+      if @question[:question_type] == Settings.single
+        if quantity == Settings.num_answer_single
           flag = true
         else
           @message = t "views.admin.question.single_question_error"
         end
-      elsif @question[:question_type] == 1
-        if quantity == 2
+      elsif @question[:question_type] == Settings.multiple
+        if quantity > Settings.num_answer_single
           flag = true
         else
           @message = t "views.admin.question.multiple_question_error"
@@ -83,8 +83,9 @@ class Admin::QuestionsController < ApplicationController
 
   def destroy
     respond_to do |format|
-      if @question.results.size > 0
-        @message = t "views.admin.question.cant_delete"
+      if @question.results.size > Settings.no_result
+        flash[:danger] = t "views.admin.question.cant_delete"
+        redirect_to admin_questions_path
       else
         @question.destroy
         format.html do
@@ -102,7 +103,7 @@ class Admin::QuestionsController < ApplicationController
   private
   def check_exist_exam
     if @question.results.any?
-      flash[:danger] = "views.admin.question.cant_delete"
+      flash[:danger] = t "views.admin.question.cant_delete"
       redirect_to admin_questions_path
     end
   end
