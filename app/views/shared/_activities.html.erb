@@ -1,7 +1,13 @@
-<h1><%= t "views.layouts.header.my_activities" %></h1>
-<div class=".col-md-8">
-  <% @activities.each do |activity| %>
-    <%= render "shared/activity", activity: activity %>
-  <% end %> 
+<center><h1><%= t "views.layouts.header.my_activities" %></h1></center>
+<div class="row">
+  <table class="table table-striped table-hover table-bodered" >
+      <tbody>
+        <% @activities.each do |activity| %>
+          <tr>
+            <td><%= render "shared/activity", activity: activity %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% paginate @activities %>
 </div>
-<% paginate @activities %>

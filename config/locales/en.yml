@@ -1,5 +1,7 @@
 en:
   hello: "Hello world"
+  delete: "Delete"
+  edit: "Edit"
 
   controllers:
     admin:
@@ -13,12 +15,16 @@ en:
         update_error: "Update error!"
         delete_success: "Deleted!"
         delete_error: "Delete error!"
+        cant_delete: "Subject have examinations, can't delete"
       users_controller:
         delete_success: "Deleted!"
         delete_error: "Delete error!"
       exams_controller:
         check_success: "Checked!"
         check_error: "Check Error!"
+      question:
+        validate_number_answer: "Question has more than 2 answer"
+        number_correct: "Please choose correct answer"
     exams_controller:
       create_success: "Exam was created successfully!"
       create_error: "Create Error!"
@@ -26,6 +32,8 @@ en:
       update:
         success: "Exam update success"
         failed: "Exam update failed"
+    questions_controller:
+      cant_delete: "Question in result, can't delete"
   views:
     static_pages:
       home:
@@ -55,7 +63,7 @@ en:
       subjects:
         all_subject: "Subjects"
         add_new: "Create"
-        index: "#"
+        index: "Index"
         name: "Subject"
         total_question: "Question number"
         duration: "Duration"
@@ -68,7 +76,7 @@ en:
       users:
         title: "Users"
         all_user: "All Users"
-        index: "#"
+        index: "Index"
         name: "Name"
         email: "Email"
         show: "Show"
@@ -77,7 +85,7 @@ en:
       question:
         new: "Add question"
         add: "Add a question"
-        stt: "#"
+        stt: "Index"
         save: "Save"
         edit: "Edit"
         delete: "Delete"
@@ -94,7 +102,7 @@ en:
         create_fail: "Create question fail!"
         update_success: "Update question success!"
         update_fail: "Update question failed!"
-        cant_delete: "Question have result, can't delete"
+        cant_delete: "Question in result, can't delete"
         deleted: "Question has been deleted"
         single_question_error: "Single question has only one correct answer"
         multiple_question_error: "Multiple question has many correct answer"
@@ -139,7 +147,7 @@ en:
         error: "error"
       activity:
         create: "has created"
-        edit: "has edited"
+        edit: "has completed"
         ago: "ago"
     user_mailer:
       notify_subject_create: "%{subject} was created. Please check and learn more"
