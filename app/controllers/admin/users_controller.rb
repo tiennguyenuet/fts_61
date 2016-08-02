@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :check_admin
+  before_action :check_supper, only: :update
   load_and_authorize_resource
 
   def index
@@ -11,13 +12,26 @@ class Admin::UsersController < ApplicationController
   def show
   end
 
-  def destroy
-    if @user.destroy
-      flash[:success] = t "controllers.admin.users_controller.delete_success"
-      redirect_to admin_users_path
-    else
-      flash[:danger] = t "controllers.admin.users_controller.delete_error"
-      redirect_to :back
+  def update
+    respond_to do |format|
+      if @user.update user_params
+        format.html do
+          flash[:success] = t "controllers.admin.users_controller.update_success"
+          redirect_to admin_users_path
+        end
+        format.json{render @user, status: :ok}
+      else
+        format.html do
+          flash[:danger] = t "controllers.admin.users_controller.update_fail"
+          redirect_to admin_users_path
+        end
+        format.json{render @user.error, status: :unprocessable_entity}
+      end
     end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit :id, :role
   end
 end

@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
   has_many :examinations, dependent: :destroy
   has_many :questions, dependent: :destroy
 
-  enum role: [:user, :admin]
-
+  enum role: [:user, :admin, :supper]
   validates :name, presence: true, length: {maximum: 30},
     uniqueness: {case_sensitive: true}
 
@@ -41,5 +40,4 @@ class User < ActiveRecord::Base
       end
     end
   end
-
 end

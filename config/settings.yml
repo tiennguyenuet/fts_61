@@ -7,6 +7,7 @@ DATETIME: "%d/%m/%Y"
 default_time: "00:00:00"
 num_answer_single: 1
 single: 0
-multiple: 2
+multiple: 1
 no_answer: 0
+no_result: 0
 time_to_notify: 8

@@ -6,18 +6,16 @@ class Admin::SubjectsController < ApplicationController
     @search = Subject.search params[:q]
     @subjects = @search.result.order(created_at: :desc)
       .page(params[:page]).per Settings.per_page
+    @subject = Subject.new
   end
 
   def new
   end
 
   def create
-    if @subject.save
-      flash[:success] = t "controllers.admin.subjects_controller.create_success"
-      redirect_to admin_subjects_path
-    else
-      flash[:danger] =  t "controllers.admin.subjects_controller.create_error"
-      render :new
+    @subject.save
+    respond_to do |format|
+        format.js
     end
   end
 

@@ -9,11 +9,11 @@
     </div>
     <div class="col-md-8 col-md-offset-1">
       <%= form_for @examination do |f| %>
-        <%= f.fields_for :results do |result| %>
-          <ol>
+        <ol>
+          <%= f.fields_for :results do |result| %>
             <%= render "question", f: result %>
-          </ol>
-        <% end %>
+          <% end %>
+        </ol>
         <div class="col-md-8 col-md-offset-1">
           <button type="submit" value="testing" name="examination[status]"
             class="btn btn-primary btn-submit submit-time-out">

@@ -23,24 +23,38 @@
         <th><%= t "views.admin.users.index" %></th>
         <th><%= t "views.admin.users.name" %></th>
         <th><%= t "views.admin.users.email" %></th>
-        <th class="actions"></th>
+        <th><%= t "views.admin.users.manage" %></th>
       </tr>
     </thead>
     <tbody>
       <% @users.each_with_index do |user, index| %>
-        <tr>
-          <td><%= index + 1 %></td>
-          <td><%= user.name %></td>
-          <td><%= user.email %></td>
-          <td>
-            <%= link_to admin_user_path(user),
-              method: :delete,
-              data: {confirm: t("views.admin.users.delete_confirm"),
-                toggle: "tooltip", placement: "top"}, title: t("delete") do %>
-              <span class="glyphicon glyphicon-trash text-danger"><span>
+        <% unless user.supper? %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= link_to user.name, user_path(user) %></td>
+            <td><%= user.email %></td>
+            <% if current_user.supper? %>
+              <td>
+                <% if user.user? || user.role.nil? %>
+                  <%= form_for [:admin, user] do |f| %>
+                    <%= f.hidden_field :role, value: :admin %>
+                    <%= f.submit t("views.admin.admin_action"),
+                      class: "col-md-6 btn btn-success" %>
+                  <% end %>
+                <% end %>
+                <% if user.admin? %>
+                  <%= form_for [:admin, user] do |f| %>
+                    <%= f.hidden_field :role, value: :user %>
+                    <%= f.submit t("views.admin.user_action"),
+                      class: "col-md-6 btn btn-danger" %>
+                  <% end %>
+                <% end %>
+              </td>
+            <% else %>
+              <td></td>
             <% end %>
-          </td>
-        </tr>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

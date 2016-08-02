@@ -1,0 +1,19 @@
+<tr>
+  <td></td>
+  <td><%= subject.name %></td>
+  <td><%= subject.total_question %></td>
+  <td><%= subject.duration %> minutes</td>
+  <td><%= subject.description %></td>
+  <td>
+    <%= link_to edit_admin_subject_path(subject),
+      data: {toggle: "tooltip", placement: "top"}, title: t("edit") do %>
+      <span class= "glyphicon glyphicon-edit"></span>
+    <% end %> |
+    <%= link_to admin_subject_path(subject),
+      method: :delete, data: {toggle: "tooltip", placement: "top",
+        confirm: t("views.admin.subjects.delete_confirm")},
+        title: t("delete") do %>
+      <span class="glyphicon glyphicon-trash text-danger"></span>
+    <% end %>
+  </td>
+</tr>

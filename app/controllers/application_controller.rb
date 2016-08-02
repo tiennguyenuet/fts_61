@@ -15,7 +15,17 @@ class ApplicationController < ActionController::Base
 
   def check_admin
     if user_signed_in?
-      unless current_user.admin?
+      unless current_user.admin? || current_user.supper?
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
+  def check_supper
+    if user_signed_in?
+      unless current_user.supper?
         redirect_to root_path
       end
     else

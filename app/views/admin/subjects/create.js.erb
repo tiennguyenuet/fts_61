@@ -1,0 +1,12 @@
+<% if @subject.invalid? %>
+  $('.subject-errors').append('<%= j render "shared/error_messages", object: @subject %>');
+  $('.subject-errors').delay(5000).slideUp();
+<% else %>
+  $('#subjects-index').append('<%= j (render @subject) %>');
+  $('#new-subject').modal('hide');
+  $('#subject_name').val('');
+  $('#subject_total_question').val('');
+  $('#subject_duration').val('');
+  $('#subject_description').val('');
+  $('#admin_subject tbody tr:last').find('td:first').text($('#admin_subject tbody tr').length);
+<% end %>
