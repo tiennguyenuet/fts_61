@@ -44,6 +44,7 @@ gem "sidekiq"
 gem "letter_opener"
 gem "delayed_job_active_record"
 gem "daemons"
+gem "active_link_to"
 
 group :development, :test do
   gem "sqlite3"

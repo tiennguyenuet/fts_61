@@ -5,29 +5,37 @@
         <%= image_tag('logo.png', size: "140x50")%>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to t("views.layouts.header.home"), root_url %></li>
+        <li class="<%= "active" if current_page?(root_path) %>">
+          <%= link_to t("views.layouts.header.home"), root_url %>
+        </li>
         <% if user_signed_in? %>
           <% if can? :manage, :all %>
-            <li>
+            <li class="<%= "active" if current_page?(admin_subjects_path) %>">
               <%= link_to t("views.admin.subjects.all_subject"),
                 admin_subjects_path %>
             </li>
-            <li>
+            <li class="<%= "active" if current_page?(admin_questions_path) %>">
               <%= link_to t("views.admin.question.questions"),
                 admin_questions_path %>
             </li>
-            <li><%= link_to t("views.admin.exams.user_exams"),
+            <li class="<%= "active" if current_page?(admin_examinations_path) %>">
+              <%= link_to t("views.admin.exams.user_exams"),
               admin_examinations_path %></li>
-            <li>
+            <li class="<%= "active" if current_page?(admin_users_path) %>">
               <%= link_to t("views.admin.users.title"),
                 admin_users_path %>
             </li>
-            <li><%= link_to t("views.layouts.header.signout"),
+            <li class="<%= "active" if current_page?(destroy_user_session_path) %>">
+              <%= link_to t("views.layouts.header.signout"),
               destroy_user_session_path, method: :delete %>
             </li>
           <% else %>
-            <li><%= link_to t("views.layouts.header.exams"), examinations_path %></li>
-            <li><%= link_to t("views.layouts.header.contribute_questions"), questions_path %></li>
+            <li class="<%= "active" if current_page?(examinations_path) %>">
+              <%= link_to t("views.layouts.header.exams"), examinations_path %>
+            </li>
+            <li class="<%= "active" if current_page?(questions_path) %>">
+              <%= link_to t("views.layouts.header.contribute_questions"), questions_path %>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= current_user.name %><b class="caret"></b>
@@ -45,10 +53,12 @@
             </li>
           <% end %>
         <% else %>
-          <li><%= link_to t("views.layouts.header.signup"),
+          <li class="<%= "active" if current_page?(new_user_registration_path) %>">
+            <%= link_to t("views.layouts.header.signup"),
             new_user_registration_path %>
           </li>
-          <li><%= link_to t("views.layouts.header.signin"),
+          <li class="<%= "active" if current_page?(new_user_session_path) %>">
+            <%= link_to t("views.layouts.header.signin"),
             new_user_session_path %>
           </li>
         <% end %>
